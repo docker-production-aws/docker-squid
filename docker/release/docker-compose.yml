@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  squid:
+    build:
+      context: ../..
+      dockerfile: docker/release/Dockerfile
+      args:
+        app_name: ${PROJECT_NAME}
+    ports:
+      - "3128"
+    environment:
+      NO_WHITELIST: ${NO_WHITELIST}
+      SQUID_WHITELIST: ${SQUID_WHITELIST}
+      SHUTDOWN_LIFETIME: "0"
